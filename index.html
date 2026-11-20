@@ -196,7 +196,7 @@ function setErr(id,msg){$(id).classList.toggle('err',!!msg);const e=$(id+'_e');e
 function validate(){
   let ok=true;const chk=(id,cond,msg)=>{const bad=cond();setErr(id,bad?msg:'');if(bad)ok=false};
   const w=num('w'),p=num('p'),f=num('f'),s=num('s'),h=num('h'),o=num('o');
-  chk('w',()=>!(w>0)||w>60,isNaN(w)?'Completează masa găleții (ex. 13).':'Masa trebuie să fie între 0,5 și 60 kg.');
+  chk('w',()=>!(w>0)||w>60,$('w').value.trim()===''?'Completează masa găleții (ex. 13).':isNaN(w)?'Introdu un număr, ex. 13 (nu text).':'Masa trebuie să fie între 0,5 și 60 kg.');
   if(w>0&&w<0.5){setErr('w','Masa trebuie să fie între 0,5 și 60 kg.');ok=false}
   chk('p',()=>!(Number.isInteger(p)&&p>=1&&p<=400),isNaN(p)?'Completează câte găleți intră pe un palet (ex. 44).':'Număr întreg între 1 și 400.');
   chk('f',()=>!(f>0&&f<=30),isNaN(f)?'Completează debitul liniei (ex. 7 găleți/min).':'Debitul trebuie să fie între 0,1 și 30 găleți/min.');
