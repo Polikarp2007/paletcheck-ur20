@@ -183,6 +183,8 @@ footer .fine{grid-column:1/-1;border-top:1px solid rgba(255,255,255,.1);padding-
 .verdict{padding:12px 16px!important;gap:12px!important;border-radius:16px!important}
 .verdict .ic{flex:0 0 34px!important;height:34px!important;border-radius:10px!important;font-size:18px!important}
 .verdict b{font-size:17px!important;display:inline!important;margin-right:8px}.verdict span{font-size:14px!important}
+.verdict{border-radius:0!important;background:#0d9a68!important}.verdict.warn{background:#e08a00!important}.verdict.bad{background:#e3123c!important}
+.verdict .ic{border-radius:0!important}
 </style>
 </head>
 <body>
@@ -247,20 +249,20 @@ footer .fine{grid-column:1/-1;border-top:1px solid rgba(255,255,255,.1);padding-
   <div class="sh"><div class="eyebrow">Verificare gratuită</div><h2>Se potrivește UR20 cu linia ta?</h2><p>Calcul instant, pe baza rezultatelor de test ale celulelor Tech-Con livrate la PURATOS.</p></div>
   <div class="tool">
     <div class="panel sticky">
-      <h3>Datele liniei</h3><p class="hint0">Valori aproximative sunt suficiente.</p>
+      <h3>Linia ta</h3><p class="hint0">6 valori · 60 de secunde</p>
       <label>Formatul găleții</label>
       <div class="seg" id="fmt"><button type="button" data-w="5" data-p="100">5 kg</button><button type="button" data-w="13" data-p="44" class="on">13 kg</button><button type="button" data-w="" data-p="">Alt format</button></div>
       <div class="r2">
-        <div><label for="w">Masa găleții (kg)</label><input id="w" inputmode="decimal" value="13"><div class="emsg" id="w_e"></div></div>
-        <div><label for="p">Găleți / palet</label><input id="p" inputmode="numeric" value="44"><div class="emsg" id="p_e"></div></div>
+        <div><label for="w">Masa găleții, kg</label><input id="w" inputmode="decimal" value="13"><div class="emsg" id="w_e"></div></div>
+        <div><label for="p">Găleți pe palet</label><input id="p" inputmode="numeric" value="44"><div class="emsg" id="p_e"></div></div>
       </div>
-      <label for="f">Debitul liniei de umplere <span class="h">găleți / min</span></label>
+      <label for="f">Debit linie de umplere, găleți/min</label>
       <input id="f" inputmode="decimal" value="7"><div class="emsg" id="f_e"></div>
       <div class="r2">
         <div><label for="s">Schimburi / zi</label><select id="s"><option value="">Alege</option><option>1</option><option selected>2</option><option>3</option></select><div class="emsg" id="s_e"></div></div>
         <div><label for="h">Ore / schimb</label><input id="h" inputmode="decimal" value="8"><div class="emsg" id="h_e"></div></div>
       </div>
-      <label for="o">Operatori la paletizare manuală, pe schimb</label>
+      <label for="o">Operatori la paletizare / schimb</label>
       <input id="o" inputmode="numeric" value="2"><div class="emsg" id="o_e"></div>
       <div class="acts"><button class="btn" id="go">Verifică potrivirea →</button>
         <div class="mini"><button type="button" id="demoOk">Exemplu: linie 13 kg</button><button type="button" id="demoBad">Exemplu: date greșite</button></div></div>
@@ -365,7 +367,7 @@ let simH=null;
 function render(d,r){
   const v=VER[r.sev];
   $('out').innerHTML=`<div class="verdict ${r.sev}"><div class="ic">${v[0]}</div><div><b>${v[1]}</b><span>${v[2]}</span></div></div>${sim(d,r)}
-  <div class="kp"><div class="k"><b>${nf(r.eff,1)}</b><span>găleți/min paletizate</span></div><div class="k"><b>${nf(r.pal,0)}</b><span>paleți pe schimb de ${nf(d.h,0)} h</span></div><div class="k"><b>${nf(r.kg/1000,1)} t</b><span>nu mai sunt ridicate manual pe schimb</span></div><div class="k"><b>${nf(r.ty,0)} t</b><span>pe an <span class="tag a">250 zile</span></span></div></div>
+  <div class="kp"><div class="k"><b>${nf(r.eff,1)}</b><span>găleți/min paletizate</span></div><div class="k"><b>${nf(r.pal,0)}</b><span>paleți pe schimb de ${nf(d.h,0)} h</span></div><div class="k"><b>${nf(r.kg/1000,1)} t</b><span>nu mai sunt ridicate manual pe schimb</span></div><div class="k"><b>${r.man}</b><span>operatori/zi nu mai ridică găleți</span></div></div>
   <ul class="chk">${r.c.map(x=>`<li><span class="dot ${x[0]}"></span><span>${x[1]}</span></li>`).join('')}</ul>
   <p class="src">Ritm celulă: ${r.refTxt} <span class="tag ${r.fact?'f':'a'}">${r.fact?'fapt':'ipoteză'}</span> · gripper ≈ 5 kg <span class="tag a">ipoteză</span> · valori confirmate gratuit la evaluarea tehnică.</p>
   <div class="resacts"><a class="btn red" href="#evaluare">Solicită evaluarea tehnică →</a><button class="btn soft" onclick="printSheet()">Descarcă fișa pentru director (PDF)</button></div>`;
@@ -379,7 +381,7 @@ function printSheet(){
   if(!last)return;const {d,r}=last,v=VER[r.sev],col={ok:'#0d9a68',warn:'#d97f00',bad:'#e3123c'}[r.sev];
   $('sheet').innerHTML=`<div class="sh-top"><div class="tc">Tech<i></i>Con · PaletCheck UR20</div><h1>Fișă de pre-evaluare: paletizarea găleților cu UR20</h1><p>Pentru comitetul de investiții · generată la ${new Date().toLocaleDateString('ro-RO')} · EUR fără TVA</p></div>
   <div class="sh-body"><div class="sh-v" style="background:${col}">${v[1]}: ${v[2]}</div>
-  <div class="sh-k"><div><b>${nf(r.eff,1)}</b><span>găleți/min paletizate</span></div><div><b>${nf(r.pal,0)}</b><span>paleți / schimb</span></div><div><b>${nf(r.kg/1000,1)} t</b><span>scutite de ridicat / schimb</span></div><div><b>${nf(r.ty,0)} t</b><span>pe an (250 zile)</span></div></div>
+  <div class="sh-k"><div><b>${nf(r.eff,1)}</b><span>găleți/min paletizate</span></div><div><b>${nf(r.pal,0)}</b><span>paleți / schimb</span></div><div><b>${nf(r.kg/1000,1)} t</b><span>scutite de ridicat / schimb</span></div><div><b>${r.man}</b><span>operatori/zi eliberați de ridicare</span></div></div>
   <h4>Datele liniei</h4><table><tr><td>Găleată / palet</td><td>${nf(d.w,1)} kg · ${d.p} găleți pe palet</td></tr><tr><td>Debit linie de umplere</td><td>${nf(d.f,1)} găleți/min</td></tr><tr><td>Program</td><td>${d.s} schimburi × ${nf(d.h,1)} h · azi ${d.o} operatori/schimb ridică manual</td></tr></table>
   <h4>Verificări</h4><table>${r.c.map(x=>`<tr><td>${x[0]==='ok'?'✓ În regulă':x[0]==='warn'?'! De verificat':'× Limită depășită'}</td><td>${x[1]}</td></tr>`).join('')}</table>
   <h4>Fapte din aplicația de referință (PURATOS)</h4><table><tr><td>Ritm testat</td><td>7,4 găleți/min la 13 kg, 8,6 la 5 kg (țintă minimă 6)</td></tr><tr><td>Fiabilitate la FAT</td><td>0 preluări nereușite</td></tr><tr><td>Componente</td><td>UR20, gripper pneumatic adaptat, vision SICK 2D pentru mâner, 2 poziții de palet, 3 scanere de siguranță</td></tr><tr><td>Livrare</td><td>aprox. 4 luni de la comandă</td></tr><tr><td>Rolul operatorului</td><td>schimbă paletul și pune separatorul</td></tr></table>
