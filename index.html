@@ -161,31 +161,75 @@ footer .fine{grid-column:1/-1;border-top:1px solid rgba(255,255,255,.1);padding-
 .sh-body table{width:100%;border-collapse:collapse}.sh-body td{padding:6px 8px;border-bottom:1px solid #e2e5f2;vertical-align:top}.sh-body td:first-child{width:30%;color:#5d648f}
 .sh-top,.sh-k div{-webkit-print-color-adjust:exact;print-color-adjust:exact}
 .sh-foot{margin:18px 36px;padding-top:10px;border-top:1px solid #e2e5f2;font-size:10.5px;color:#5d648f}
+
+.hero .w{display:grid;grid-template-columns:.85fr 1.15fr;gap:40px;align-items:center;padding-top:64px;padding-bottom:56px}
+.hero h1{font-size:clamp(34px,4.4vw,58px)!important;line-height:1.03!important;letter-spacing:-2px!important;margin:16px 0 18px!important}
+.hero p.lead{font-size:18px;max-width:520px}
+.cellart{max-width:none!important;justify-self:stretch!important}
+.proof{grid-column:1/-1;display:grid!important;grid-template-columns:repeat(5,1fr);gap:0!important;margin-top:8px!important;border-top:1px solid rgba(255,255,255,.14);padding-top:24px}
+.proof div{padding-right:16px}.proof div+div{border-left:1px solid rgba(255,255,255,.12);padding-left:20px}
+.cmp{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:22px}
+.cmpcol{border-radius:22px;padding:24px 26px;border:1px solid var(--line);background:#fff}
+.cmpcol.after{background:linear-gradient(140deg,var(--n),#1414a8);color:#fff;border:0}
+.cmph{display:flex;align-items:center;gap:12px;margin-bottom:10px}.cmph b{font-size:20px;letter-spacing:-.4px}
+.pill0{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;padding:5px 10px;border-radius:999px;background:var(--bg);color:var(--mut)}.pill0.on{background:var(--red);color:#fff}
+.row0{display:flex;justify-content:space-between;gap:14px;padding:12px 0;border-top:1px solid var(--line);font-size:15px}.row0 span{color:var(--mut)}.row0 b{text-align:right}
+.after .row0{border-color:rgba(255,255,255,.14)}.after .row0 span{color:#b9bdf5}
+.trio{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.ico{width:44px;height:44px;border-radius:14px;background:#eef0ff;color:var(--b);display:flex;align-items:center;justify-content:center;margin-bottom:16px}
+.honest{margin:22px auto 0;max-width:880px;text-align:center;color:var(--mut);font-size:14px}
+.leadinfo li .n0{flex:0 0 26px;height:26px;border-radius:8px;background:rgba(255,255,255,.14);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px}
+@media(max-width:980px){.hero .w{grid-template-columns:1fr}.proof{grid-template-columns:repeat(2,1fr)}.proof div+div{border-left:0;padding-left:0}.proof div{padding:10px 0}.cmp,.trio{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
 
 <nav><div class="w">
   <a class="brand" href="#top"><span class="tc">Tech<i></i>Con</span><span class="sep"></span><span class="pc">PaletCheck UR20<small>Paletizare robotizată a găleților</small></span></a>
-  <div class="links"><a href="#cum">Cum funcționează</a><a href="#verificare">Verificare</a><a href="#evaluare">Evaluare tehnică</a><a href="#panou">Panou vânzări</a><a href="#faq">Întrebări</a></div>
+  <div class="links"><a href="#dece">De ce UR20</a><a href="#cum">Cum funcționează</a><a href="#verificare">Verificare</a><a href="#evaluare">Evaluare tehnică</a><a href="#panou">Panou vânzări</a><a href="#faq">Întrebări</a></div>
   <a class="btn red sm" href="#verificare">Verifică linia</a>
 </div></nav>
 
 <header class="hero" id="top"><div class="w">
   <div>
-    <div class="eyebrow">Pentru fabricile alimentare din România</div>
-    <h1>Oamenii tăi ridică <em>25 de tone</em> de găleți pe schimb. Un UR20 o poate face în locul lor.</h1>
-    <p class="lead">Află în 60 de secunde dacă linia ta se potrivește cu o celulă de paletizare UR20: sarcina utilă, blocajul real al fluxului, paleți pe schimb. Primești și o fișă gata de prezentat la comitetul de investiții.</p>
-    <div class="cta"><a class="btn red" href="#verificare">Verifică linia mea →</a><a class="btn line" href="#cum">Cum funcționează</a></div>
-    <div class="proof">
-      <div><b>7,4 / 8,6</b><span>găleți/min · 13 / 5 kg, testat</span></div>
-      <div><b>0</b><span>preluări nereușite la FAT</span></div>
-      <div><b>2</b><span>poziții de palet / celulă</span></div>
-      <div><b>~4 luni</b><span>de la comandă la livrare</span></div>
-    </div>
+    <div class="eyebrow">Tech-Con · celule de paletizare UR20</div>
+    <h1>Paletizarea găleților, <em>fără ridicări manuale.</em></h1>
+    <p class="lead">Află în 60 de secunde dacă linia ta e potrivită pentru o celulă UR20 și primește o fișă gata de prezentat la comitetul de investiții.</p>
+    <div class="cta"><a class="btn red" href="#verificare">Verifică linia mea →</a><a class="btn line" href="#dece">De ce UR20</a></div>
   </div>
-  <div class="cellart"><canvas id="heroCell" style="width:100%;display:block" aria-label="Animație: robotul UR20 preia găleți de pe transportor și le paletizează pe două poziții"></canvas></div>
+  <div class="cellart"><canvas id="heroCell" style="width:100%;display:block" aria-label="Animație: UR20 preia găleți de pe transportor și le paletizează pe două poziții"></canvas></div>
+  <div class="proof">
+    <div><b>7,4 / 8,6</b><span>găleți/min testat la 13 / 5 kg</span></div>
+    <div><b>+23% / +43%</b><span>peste ținta clientului de 6/min</span></div>
+    <div><b>0</b><span>preluări nereușite la testul FAT</span></div>
+    <div><b>2</b><span>poziții de palet: schimb fără oprire</span></div>
+    <div><b>~4 luni</b><span>de la comandă la livrare</span></div>
+  </div>
 </div></header>
+
+<section id="dece"><div class="w">
+  <div class="sh"><div class="eyebrow">Pentru directorul de producție</div><h2>Ce se schimbă pe linie cu o celulă UR20</h2><p>Comparație pe aplicația de referință PURATOS: găleți de 13 kg, schimb de 8 ore.</p></div>
+  <div class="cmp">
+    <div class="cmpcol before"><div class="cmph"><span class="pill0">Azi</span><b>Paletizare manuală</b></div>
+      <div class="row0"><span>Ritm</span><b>~4 găleți/min</b></div>
+      <div class="row0"><span>Ridicat manual pe schimb</span><b>~25 t</b></div>
+      <div class="row0"><span>Oameni pe schimb la paletizare</span><b>2 operatori</b></div>
+      <div class="row0"><span>Model pe palet</span><b>variabil, depinde de oboseală</b></div>
+      <div class="row0"><span>Ritm măsurabil</span><b>greu de urmărit</b></div></div>
+    <div class="cmpcol after"><div class="cmph"><span class="pill0 on">Cu UR20</span><b>Celulă Tech-Con</b></div>
+      <div class="row0"><span>Ritm testat</span><b>7,4 găleți/min (13 kg) · 8,6 (5 kg)</b></div>
+      <div class="row0"><span>Ridicat manual pe schimb</span><b>0 găleți, robotul le preia</b></div>
+      <div class="row0"><span>Rolul operatorului</span><b>schimbă paletul și pune separatorul</b></div>
+      <div class="row0"><span>Model pe palet</span><b>programat, identic la fiecare palet</b></div>
+      <div class="row0"><span>Siguranță</span><b>3 scanere: încetinire sau oprire la acces</b></div></div>
+  </div>
+  <div class="trio">
+    <div class="st"><div class="ico"><svg viewBox="0 0 24 24" width="22" height="22"><path d="M4 17h16M7 17V9h4v8M13 17V5h4v12" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg></div><h3>Mai puțin efort repetitiv</h3><p>Operatorii nu mai ridică fiecare găleată de 13 kg de pe bandă. Rămân pentru schimbul de palet și controlul liniei.</p></div>
+    <div class="st"><div class="ico"><svg viewBox="0 0 24 24" width="22" height="22"><rect x="4" y="4" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="2" fill="none"/><rect x="13" y="4" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="2" fill="none"/><rect x="4" y="13" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="2" fill="none"/><rect x="13" y="13" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="2" fill="none"/></svg></div><h3>Paleți identici</h3><p>Camera 2D verifică mânerul înainte de preluare, iar modelul programat așază gălețile la fel pe fiecare palet.</p></div>
+    <div class="st"><div class="ico"><svg viewBox="0 0 24 24" width="22" height="22"><circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="2" fill="none"/><path d="M12 7v5l3 2" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg></div><h3>Ritm pe care îl poți măsura</h3><p>Știi câte găleți pe minut ies din celulă și le compari cu debitul liniei de umplere. Verificarea de mai jos face exact asta.</p></div>
+  </div>
+  <p class="honest"><b>Ce nu promitem:</b> valorile sunt rezultate de test ale aplicației PURATOS, nu o garanție pentru orice fabrică. Un robot mai rapid nu crește singur debitul fabricii dacă blocajul e la umplere. Înfolierea și transportul paleților nu fac parte din celulă.</p>
+</div></section>
 
 <section id="cum"><div class="w">
   <div class="sh"><div class="eyebrow">Cum funcționează</div><h2>De la „merge și la noi?” la evaluare tehnică în trei pași</h2><p>Directorul de producție verifică singur potrivirea, iar inginerii Tech-Con primesc o cerere cu date tehnice reale.</p></div>
@@ -227,7 +271,7 @@ footer .fine{grid-column:1/-1;border-top:1px solid rgba(255,255,255,.1);padding-
 
 <section id="evaluare" style="padding-top:0"><div class="w"><div class="leadwrap">
   <div class="leadinfo"><div class="eyebrow">Evaluare tehnică gratuită</div><h3>Un inginer Tech-Con verifică linia ta la fața locului.</h3><p>Rezultatul verificării se atașează automat cererii, așa că prima discuție pornește de la datele tale, nu de la zero.</p>
-    <ul><li>📦 <span><b>Ambalaj și sarcină:</b> greutate, formă, mâner, stabilitate, gripper</span></li><li>⏱ <span><b>Flux:</b> debit, model de paletizare, separator, schimbul paleților</span></li><li>🛡 <span><b>Siguranță și igienă:</b> evaluarea riscurilor, acces, scanere</span></li><li>📍 <span><b>Echipe în Iași, Timișoara și Dragomirești-Deal</b>, plus demonstrații live</span></li></ul></div>
+    <ul><li><span class="n0">1</span><span><b>Ambalaj și sarcină:</b> greutate, formă, mâner, stabilitate, gripper</span></li><li><span class="n0">2</span><span><b>Flux:</b> debit, model de paletizare, separator, schimbul paleților</span></li><li><span class="n0">3</span><span><b>Siguranță și igienă:</b> evaluarea riscurilor, acces, scanere</span></li><li><span class="n0">4</span><span><b>Echipe în Iași, Timișoara și Dragomirești-Deal</b>, plus demonstrații live</span></li></ul></div>
   <div class="panel">
     <form id="lead" novalidate>
       <h3>Solicită evaluarea</h3><p class="hint0">Răspundem în 48 de ore lucrătoare.</p>
