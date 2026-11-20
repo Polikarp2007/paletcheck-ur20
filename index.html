@@ -250,6 +250,19 @@ footer .w{display:block!important}
 .fbot{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;border-top:1px solid rgba(255,255,255,.1);padding-top:18px;font-size:12px;color:#8a8fd0}
 @media(max-width:980px){.fgrid{grid-template-columns:1fr 1fr}}@media(max-width:600px){.fgrid{grid-template-columns:1fr}.fcta{padding:22px}}
 .hero h1 em{background:none!important;color:#b9cbff!important;-webkit-text-fill-color:#b9cbff;text-shadow:0 2px 0 #060945,0 6px 18px rgba(0,0,0,.6)}
+footer{background:#0a0e6b!important;padding:56px 0 30px!important;color:#c9ccff}
+.f2{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr 1.2fr;gap:30px;padding-bottom:36px;border-bottom:1px solid rgba(255,255,255,.14)}
+.fbrand .flogo{font-weight:900;font-size:30px;color:#fff;letter-spacing:-1px}.fbrand .flogo i{display:inline-block;width:9px;height:9px;border-radius:50%;background:#e3123c;margin:0 3px 4px}
+.fslog{display:block;color:#fff;font-size:19px;margin:22px 0 14px;letter-spacing:-.3px}.fbrand p{margin:0;font-size:15px;max-width:330px;color:#c9ccff}
+.fcol h4{margin:6px 0 20px;color:#fff;font-size:13px;letter-spacing:.14em;text-transform:uppercase;position:relative}
+.fcol h4:after{content:"";position:absolute;left:0;bottom:-9px;width:22px;height:3px;background:#e3123c;border-radius:2px}
+.fcol a{display:block;color:#dfe2ff;text-decoration:none;padding:5px 0;font-size:15px}.fcol a:hover{color:#fff}
+.fmut{display:block;color:#9aa0dd;font-size:14px;margin:4px 0 14px}
+.fcol a.fpill{display:inline-block;border:1.5px solid #fff;border-radius:999px;padding:9px 16px;font-weight:700;color:#fff}
+.f2bot{display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap;padding-top:22px}
+.chips{display:flex;gap:8px;flex-wrap:wrap}.chips span{background:#fff;color:#0a0e6b;font-weight:800;font-size:12px;padding:7px 11px;border-radius:7px}
+.fcopy{text-align:right;font-size:13.5px;color:#c9ccff}.fcopy span{font-size:12px;color:#9aa0dd}
+@media(max-width:980px){.f2{grid-template-columns:1fr 1fr}.fbrand{grid-column:1/-1}.fcopy{text-align:left}}
 </style>
 </head>
 <body>
@@ -402,15 +415,17 @@ footer .w{display:block!important}
 
 <footer>
   <div class="w">
-    <div class="fcta"><div><b>Linia ta de găleți, paletizată de UR20.</b><span>Verificare în 60 de secunde, evaluare tehnică gratuită.</span></div><div class="fbtns"><a class="btn red" href="#verificare">Verifică linia →</a><a class="btn line" href="#contact">Contact</a></div></div>
-    <div class="fgrid">
-      <div><span class="flogo">Tech<i></i>Con</span><p>Celule de paletizare robotizată UR20 pentru fabricile alimentare din România: integrare, instalare, instruire și service.</p></div>
-      <div><b>Echipe regionale</b><a href="#contact">Iași</a><a href="#contact">Timișoara</a><a href="#contact">Dragomirești-Deal</a></div>
-      <div><b>Soluția</b><a href="#dece">De ce UR20</a><a href="#galerie">Galerie</a><a href="#cum">Cum funcționează</a></div>
-      <div><b>Pentru clienți</b><a href="#verificare">Verificare linie</a><a href="#evaluare">Evaluare tehnică</a><a href="#faq">Întrebări frecvente</a></div>
+    <div class="f2">
+      <div class="fbrand"><span class="flogo">Tech<i></i>Con</span><b class="fslog">Verifici. Paletizezi. Fără ridicări.</b><p>Celule de paletizare robotizată UR20 pentru fabricile alimentare din România.</p></div>
+      <div class="fcol"><h4>Soluția</h4><a href="#dece">De ce UR20</a><a href="#galerie">Galerie</a><a href="#cum">Cum funcționează</a></div>
+      <div class="fcol"><h4>Clienți</h4><a href="#verificare">Verificare linie</a><a href="#evaluare">Evaluare tehnică</a><a href="#faq">Întrebări frecvente</a><a href="#panou">Panou vânzări</a></div>
+      <div class="fcol"><h4>Echipe</h4><a href="#contact">Iași</a><a href="#contact">Timișoara</a><a href="#contact">Dragomirești-Deal</a></div>
+      <div class="fcol"><h4>Contact</h4><a href="#contact">Scrie-ne</a><span class="fmut">Răspundem în aceeași zi lucrătoare</span><a class="fpill" href="#evaluare">Solicită evaluare</a></div>
     </div>
-    <div class="trust"><span>UR20 · sarcină utilă 20 kg</span><span>Vision 2D pentru mâner</span><span>3 scanere de siguranță</span><span>2 poziții de palet</span><span>Instalare + instruire</span><span>FAT: 0 preluări nereușite</span></div>
-    <div class="fbot"><span>© 2026 PaletCheck UR20</span><span>Concept SYSUP016KP · AI-Powered Business Challenge 2026 · studiu de caz Tech-Con / PURATOS · <span class="tag f">fapt</span> date din studiu · <span class="tag a">ipoteză</span> de validat</span></div>
+    <div class="f2bot">
+      <div class="chips"><span>UR20 · 20 kg</span><span>Vision 2D</span><span>3 scanere</span><span>2 poziții palet</span><span>FAT: 0 erori</span></div>
+      <div class="fcopy">© 2026 PaletCheck UR20 · Tech-Con<br><span>Concept SYSUP016KP · AI-Powered Business Challenge 2026 · <span class="tag f">fapt</span> date din studiu · <span class="tag a">ipoteză</span> de validat</span></div>
+    </div>
   </div>
 </footer>
 <div class="mcta"><a class="btn red" href="#verificare">Verifică linia în 60 s →</a></div>
