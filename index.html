@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>PaletCheck UR20 · Tech-Con — paletizare robotizată a găleților</title>
+<title>Paletizare robotizată pentru găleți · Tech-Con PaletCheck UR20</title>
 <meta name="description" content="Verifică în 60 de secunde dacă linia ta de găleți se potrivește cu o celulă de paletizare UR20 Tech-Con: sarcină utilă, blocajul fluxului, paleți pe schimb și o fișă pentru decizia de investiție.">
 <meta name="theme-color" content="#0a0e6b">
 <link rel="manifest" href="manifest.webmanifest">
@@ -211,7 +211,7 @@ nav .btn.red,.hero .btn.red{background:#e3123c!important}
 <header class="hero" id="top"><div class="w">
   <div>
     <div class="eyebrow">Tech-Con · celule de paletizare UR20</div>
-    <h1>Paletizarea găleților, <em>fără ridicări manuale.</em></h1>
+    <h1>Paletizare robotizată pentru găleți, <em>fără ridicări manuale.</em></h1>
     <p class="lead">Află în 60 de secunde dacă linia ta e potrivită pentru o celulă UR20 și primește o fișă gata de prezentat la comitetul de investiții.</p>
     <div class="cta"><a class="btn red" href="#verificare">Verifică linia mea →</a><a class="btn line" href="#dece">De ce UR20</a></div>
   </div>
@@ -384,7 +384,7 @@ function render(d,r){
   <ul class="chk">${r.c.map(x=>`<li><span class="dot ${x[0]}"></span><span>${x[1]}</span></li>`).join('')}</ul>
   <p class="src">Ritm celulă: ${r.refTxt} <span class="tag ${r.fact?'f':'a'}">${r.fact?'fapt':'ipoteză'}</span> · gripper ≈ 5 kg <span class="tag a">ipoteză</span> · valori confirmate gratuit la evaluarea tehnică.</p>
   <div class="resacts"><a class="btn red" href="#evaluare">Solicită evaluarea tehnică →</a><button class="btn soft" onclick="printSheet()">Descarcă fișa pentru director (PDF)</button></div>`;
-  if(simH)simH.stop();simH=CellSim($('simCell'),{feed:d.f,robot:r.ref,speed:5});
+  if(simH)simH.stop();simH=CellSim($('simCell'),{feed:d.f,robot:r.ref,speed:5,warm:6});
   if(innerWidth<980)$('res').scrollIntoView({behavior:'smooth',block:'start'});
 }
 $('go').onclick=()=>{const d=validate();if(!d){last=null;if(simH){simH.stop();simH=null}$('out').innerHTML=`<div class="verdict bad"><div class="ic">×</div><div><b>Date lipsă sau greșite</b><span>Corectează câmpurile marcate cu roșu. Nu calculăm pe date incomplete.</span></div></div>`;if(innerWidth<980)$('res').scrollIntoView({behavior:'smooth'});return}last={d,r:analyze(d)};render(last.d,last.r)};
@@ -419,7 +419,7 @@ $('lead').onsubmit=e=>{e.preventDefault();let ok=true;const c=(id,bad,m)=>{setEr
   try{const a=loadLeads();a.push(l);localStorage.setItem('leads',JSON.stringify(a))}catch(_){}
   const p=prio(l);$('lead').style.display='none';$('leadOk').style.display='block';
   $('leadOk').innerHTML=`<b style="font-size:18px">Cererea ${l.id} a fost trimisă.</b><p style="margin:8px 0 0">Prioritate: <span class="pr ${p[0]}">${p[1]}</span>. ${last?'Rezultatul verificării liniei a fost atașat.':'Recomandăm să rulezi și verificarea liniei, pentru o discuție mai rapidă.'}</p><p style="margin:10px 0 0"><a href="#panou"><b>Vezi cererea în panoul de vânzări →</b></a></p>`;renderCRM()};
-CellSim($('heroCell'),{feed:7,robot:7.4,speed:4});
+CellSim($('heroCell'),{feed:7,robot:7.4,speed:4,warm:9.3});
 if('serviceWorker' in navigator)navigator.serviceWorker.register('sw.js').catch(()=>{});
 </script>
 </body>

@@ -95,6 +95,7 @@ function CellSim(canvas, opts) {
     if (R.carry) bucket(w.x - BW / 2, w.y + TOOL - 1);
     ctx.restore();
   }
+  if (o.warm) for (let i = 0; i < o.warm * 60; i++) step(1 / 60);
   function loop(now) { if (!run) return; const dt = Math.min(.05, (now - last) / 1000); last = now; step(dt); draw(); requestAnimationFrame(loop); }
   requestAnimationFrame(loop);
   return { stop() { run = false; } };
