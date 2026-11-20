@@ -44,8 +44,9 @@ function CellSim(canvas, opts) {
   function ik(tx, ty) { // poziția încheieturii (deasupra sculei)
     let x = tx - SH.x, y = ty - TOOL - SH.y, d = Math.hypot(x, y); const mx = L1 + L2 - 1; if (d > mx) { x *= mx / d; y *= mx / d; d = mx; }
     const a2 = Math.acos(Math.max(-1, Math.min(1, (d * d - L1 * L1 - L2 * L2) / (2 * L1 * L2))));
-    const a1 = Math.atan2(y, x) - Math.atan2(L2 * Math.sin(-a2), L1 + L2 * Math.cos(-a2));
-    const e = { x: SH.x + L1 * Math.cos(a1), y: SH.y + L1 * Math.sin(a1) }; return { e, w: { x: e.x + L2 * Math.cos(a1 - a2), y: e.y + L2 * Math.sin(a1 - a2) } };
+    const sol = sg => { const a1 = Math.atan2(y, x) - Math.atan2(L2 * Math.sin(sg * a2), L1 + L2 * Math.cos(sg * a2));
+      const e = { x: SH.x + L1 * Math.cos(a1), y: SH.y + L1 * Math.sin(a1) }; return { e, w: { x: e.x + L2 * Math.cos(a1 + sg * a2), y: e.y + L2 * Math.sin(a1 + sg * a2) } }; };
+    const A = sol(1), B = sol(-1); return A.e.y <= B.e.y ? A : B;
   }
   function bucket(x, y, warn) { ctx.fillStyle = warn ? '#ffb27a' : '#ffffff'; rr(x, y + 3, BW, BH - 3, 4); ctx.fill(); ctx.fillStyle = warn ? '#ff8f4d' : '#d9deff'; rr(x - 1, y, BW + 2, 6, 2); ctx.fill();
     ctx.strokeStyle = '#8f96c8'; ctx.lineWidth = 1.5; ctx.beginPath(); ctx.arc(x + BW / 2, y + 2, 8, Math.PI, 0); ctx.stroke(); }
@@ -86,7 +87,7 @@ function CellSim(canvas, opts) {
     if (o.labels) { ctx.font = '700 13px "Inter Tight",sans-serif'; ctx.fillStyle = '#aeb3ff'; ctx.fillText('Linie ' + o.feed.toLocaleString('ro-RO', { maximumFractionDigits: 1 }) + ' găleți/min', 6, 290);
       ctx.fillStyle = '#fff'; ctx.fillText('UR20 ' + o.robot.toLocaleString('ro-RO', { maximumFractionDigits: 1 }) + '/min', 318, 92);
       ctx.fillStyle = '#c9ccff'; ctx.textAlign = 'right'; ctx.fillText('Paleți finalizați: ' + done, 594, 60); ctx.textAlign = 'left';
-      let msg, col; if (jam) { msg = '▲ Coadă pe transportor: celula este blocajul'; col = '#ffb27a'; } else if (idle > .35 * tc()) { msg = '● UR20 așteaptă găleata: blocajul este linia de umplere'; col = '#6ff0b8'; } else { msg = '● Flux echilibrat'; col = '#6ff0b8'; }
+      let msg, col; if (o.feed > o.robot + 0.05) { msg = '▲ Coadă pe transportor: celula este blocajul'; col = '#ffb27a'; } else if (o.feed < o.robot - 0.05) { msg = '● UR20 așteaptă găleata: blocajul este linia de umplere'; col = '#6ff0b8'; } else { msg = '● Flux echilibrat'; col = '#6ff0b8'; }
       if (PAL.some(p => p.st !== 'ready')) msg += ' · operatorul schimbă paletul';
       ctx.fillStyle = col; ctx.fillText(msg, 6, 24); }
   }
