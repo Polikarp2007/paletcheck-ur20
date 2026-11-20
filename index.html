@@ -185,6 +185,19 @@ footer .fine{grid-column:1/-1;border-top:1px solid rgba(255,255,255,.1);padding-
 .verdict b{font-size:17px!important;display:inline!important;margin-right:8px}.verdict span{font-size:14px!important}
 .verdict{border-radius:0!important;background:#0d9a68!important}.verdict.warn{background:#e08a00!important}.verdict.bad{background:#e3123c!important}
 .verdict .ic{border-radius:0!important}
+
+/* stil unic: alb + model discret de roboți, doar nuanțe de albastru */
+body{background:#fff url(pattern.svg) repeat!important;background-size:240px!important}
+:root{--bg:#f3f5fc}
+.st,.panel,.crm,.faq details,.cmpcol.before{background:#fff}
+.k,.mini button,.pill,.tbl th{background:#f3f5fc}
+.tag.f{background:#e6e9ff!important;color:#1d1dbf!important}.tag.a{background:#f0f1f8!important;color:#5d648f!important}
+.pr.hot{background:#1d1dbf!important;color:#fff!important}.pr.mid{background:#e6e9ff!important;color:#1d1dbf!important}.pr.low{background:#f0f1f8!important;color:#5d648f!important}
+.dot.warn{background:#5b6cff!important}.dot.bad{background:#0a0e6b!important}.dot.ok{background:#0d9a68!important}
+.ok-box{background:#eef0ff!important;border-color:#d7dbff!important;color:#0a0e6b!important}
+.pill0.on{background:#fff!important;color:#1d1dbf!important}
+.btn.red{background:var(--b)!important}.btn.red:hover{background:#2b2bff!important}
+nav .btn.red,.hero .btn.red{background:#e3123c!important}
 </style>
 </head>
 <body>
@@ -392,7 +405,7 @@ function printSheet(){
 }
 const SEED=[{id:'TC-8F2K1A',co:'Exemplu: fabrică de umpluturi',jd:'Iași',rol:'Director de producție',v:'ok',cand:'În acest an',ex:1},{id:'TC-8F2J9C',co:'Exemplu: producător de sosuri HoReCa',jd:'Timiș',rol:'Responsabil investiții / CFO',v:'warn',cand:'În acest an',ex:1},{id:'TC-8F2H3D',co:'Exemplu: fabrică de gemuri',jd:'Prahova',rol:'Director tehnic / mentenanță',v:'ok',cand:'Anul viitor',ex:1},{id:'TC-8F2G7E',co:'Exemplu: lactate în găleți',jd:'Cluj',rol:'Alt rol',v:'bad',cand:'Doar mă informez',ex:1}];
 function prio(l){let s=0;if(l.v==='ok')s+=3;else if(l.v==='warn')s+=2;if(l.cand==='În acest an')s+=3;else if(l.cand==='Anul viitor')s+=1;if(l.rol!=='Alt rol')s+=2;return s>=7?['hot','Fierbinte · 48 h']:s>=4?['mid','Caldă · 1 săpt.']:['low','Nutrire e-mail']}
-const VL={ok:'Potrivire bună',warn:'De verificat',bad:'Nepotrivit',none:'Neverificat'};
+const VL={ok:'Potrivire bună',warn:'De verificat',bad:'Soluție adaptată',none:'Neverificat'};
 function loadLeads(){try{return JSON.parse(localStorage.getItem('leads')||'[]')}catch(_){return[]}}
 function renderCRM(){const all=[...loadLeads().reverse(),...SEED];let hot=0;
   $('crmBody').innerHTML=all.map(l=>{const p=prio(l);if(p[0]==='hot')hot++;return `<tr><td><b>${l.id}</b></td><td>${l.co.replace(/</g,'&lt;')}${l.ex?'':' <span class="tag f">nou</span>'}</td><td>${l.jd}</td><td>${l.rol}</td><td>${VL[l.v]}</td><td>${l.cand}</td><td><span class="pr ${p[0]}">${p[1]}</span></td></tr>`}).join('');
