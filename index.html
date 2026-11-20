@@ -313,7 +313,7 @@ function analyze(d){
   r.sev=r.c.some(x=>x[0]==='bad')?'bad':r.c.some(x=>x[0]==='warn')?'warn':'ok';return r;
 }
 const VER={ok:['✓','Potrivire bună','Linia se încadrează în aplicația de referință. Pasul următor: evaluare tehnică și demonstrație.'],warn:['!','Potrivire posibilă','Soluția poate funcționa. Punctele marcate cu portocaliu se verifică la evaluarea tehnică.'],bad:['×','Nepotrivit în forma actuală','Cel puțin o condiție depășește limitele UR20. Un inginer poate propune alternative.']};
-function sim(d,r){return `<div class="sim"><canvas id="simCell" style="width:100%;display:block"></canvas><div class="simleg"><span>2 poziții de paletizare · animație accelerată</span><span>transportor de alimentare</span></div></div>`}
+function sim(d,r){return `<div class="sim"><canvas id="simCell" style="width:100%;display:block"></canvas></div>`}
 let simH=null;
 function render(d,r){
   const v=VER[r.sev];
