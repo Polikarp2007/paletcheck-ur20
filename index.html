@@ -198,13 +198,26 @@ body{background:#fff url(pattern.svg) repeat!important;background-size:240px!imp
 .pill0.on{background:#fff!important;color:#1d1dbf!important}
 .btn.red{background:var(--b)!important}.btn.red:hover{background:#2b2bff!important}
 nav .btn.red,.hero .btn.red{background:#e3123c!important}
+
+.steps .st{display:grid;grid-template-columns:48px 1fr;column-gap:16px;align-items:start;padding:22px 24px}
+.steps .st .num{grid-row:1/3;margin:0;width:48px;height:48px;border-radius:0;background:var(--b);color:#fff}
+.steps .st h3{margin:2px 0 6px;font-size:18px}.steps .st p{font-size:14.5px}
+.contact{display:grid;grid-template-columns:1.1fr .9fr;gap:24px;align-items:start}
+.offices{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.off{background:#fff;border:1px solid var(--line);border-radius:18px;padding:20px}
+.off b{display:block;font-size:18px;margin-bottom:4px}.off span{color:var(--mut);font-size:14px}
+.off .tg{display:inline-block;margin-top:12px;font-size:12px;font-weight:700;color:var(--b);background:#eef0ff;padding:4px 10px;border-radius:999px}
+textarea{width:100%;font:500 16px "Inter Tight",sans-serif;padding:13px 15px;border:1.5px solid var(--line);border-radius:14px;background:#fafbff;color:var(--ink);min-height:96px;resize:vertical}
+@media(max-width:980px){.contact,.offices{grid-template-columns:1fr}}
+nav .w{gap:20px}.brand,.brand .tc,nav .links a{white-space:nowrap}nav .links{gap:18px;font-size:14px}
+@media(max-width:1320px){.brand .sep,.brand .pc{display:none}}
 </style>
 </head>
 <body>
 
 <nav><div class="w">
   <a class="brand" href="#top"><span class="tc">Tech<i></i>Con</span><span class="sep"></span><span class="pc">PaletCheck UR20<small>Paletizare robotizată a găleților</small></span></a>
-  <div class="links"><a href="#dece">De ce UR20</a><a href="#cum">Cum funcționează</a><a href="#verificare">Verificare</a><a href="#evaluare">Evaluare tehnică</a><a href="#panou">Panou vânzări</a><a href="#faq">Întrebări</a></div>
+  <div class="links"><a href="#dece">De ce UR20</a><a href="#cum">Cum funcționează</a><a href="#verificare">Verificare</a><a href="#evaluare">Evaluare tehnică</a><a href="#panou">Panou vânzări</a><a href="#faq">Întrebări</a><a href="#contact">Contact</a></div>
   <a class="btn red sm" href="#verificare">Verifică linia</a>
 </div></nav>
 
@@ -323,11 +336,30 @@ nav .btn.red,.hero .btn.red{background:#e3123c!important}
   </div>
 </div></section>
 
+<section id="contact" style="padding-top:0"><div class="w">
+  <div class="sh"><div class="eyebrow">Contact</div><h2>Vorbește cu un inginer Tech-Con</h2><p>Trei echipe regionale pentru evaluări tehnice, demonstrații și service.</p></div>
+  <div class="contact">
+    <div class="offices">
+      <div class="off"><b>Iași</b><span>Moldova și Nord-Est</span><br><span class="tg">Demo live UR20</span></div>
+      <div class="off"><b>Timișoara</b><span>Vest și Transilvania</span><br><span class="tg">Evaluări tehnice</span></div>
+      <div class="off"><b>Dragomirești-Deal</b><span>București, Ilfov și Sud</span><br><span class="tg">Service și instruire</span></div>
+    </div>
+    <div class="panel">
+      <form id="cform" novalidate><h3>Scrie-ne</h3><p class="hint0">Răspundem în aceeași zi lucrătoare.</p>
+        <div class="r2"><div><label for="cn">Nume</label><input id="cn" placeholder="ex. Andrei Pop"><div class="emsg" id="cn_e"></div></div>
+        <div><label for="ce">E-mail</label><input id="ce" type="email" placeholder="nume@firma.ro"><div class="emsg" id="ce_e"></div></div></div>
+        <label for="cm">Mesaj</label><textarea id="cm" placeholder="ex. Avem două linii de găleți de 10 kg și vrem o demonstrație."></textarea><div class="emsg" id="cm_e"></div>
+        <div style="margin-top:16px"><button class="btn" type="submit" style="width:100%">Trimite mesajul →</button></div></form>
+      <div class="ok-box" id="cOk"><b>Mesaj trimis.</b> Te contactează echipa regională Tech-Con.</div>
+    </div>
+  </div>
+</div></section>
+
 <footer><div class="w">
   <div><span style="font-weight:900;font-size:22px;color:#fff">Tech<i style="display:inline-block;width:7px;height:7px;border-radius:50%;background:#e3123c;margin:0 2px 3px"></i>Con</span><p style="margin:10px 0 0">PaletCheck UR20: instrument de pre-evaluare pentru paletizarea robotizată a găleților.</p></div>
   <div><b>Echipe</b>Iași<br>Timișoara<br>Dragomirești-Deal</div>
   <div><b>Soluția</b>Celulă UR20<br>Gripper + vision 2D<br>2 poziții de palet</div>
-  <div><b>Contact</b><a href="#evaluare">Solicită evaluare</a><br><a href="#verificare">Verifică linia</a></div>
+  <div><b>Contact</b><a href="#contact">Scrie-ne</a><br><a href="#evaluare">Solicită evaluare</a><br><a href="#verificare">Verifică linia</a></div>
   <div class="fine">Concept realizat de echipa SYSUP016KP în AI-Powered Business Challenge 2026, pe baza studiului de caz Tech-Con / PURATOS. <span class="tag f">fapt</span> date din studiu · <span class="tag a">ipoteză</span> presupunere de validat.</div>
 </div></footer>
 <div class="mcta"><a class="btn red" href="#verificare">Verifică linia în 60 s →</a></div>
@@ -420,6 +452,9 @@ $('lead').onsubmit=e=>{e.preventDefault();let ok=true;const c=(id,bad,m)=>{setEr
   const p=prio(l);$('lead').style.display='none';$('leadOk').style.display='block';
   $('leadOk').innerHTML=`<b style="font-size:18px">Cererea ${l.id} a fost trimisă.</b><p style="margin:8px 0 0">Prioritate: <span class="pr ${p[0]}">${p[1]}</span>. ${last?'Rezultatul verificării liniei a fost atașat.':'Recomandăm să rulezi și verificarea liniei, pentru o discuție mai rapidă.'}</p><p style="margin:10px 0 0"><a href="#panou"><b>Vezi cererea în panoul de vânzări →</b></a></p>`;renderCRM()};
 CellSim($('heroCell'),{feed:7,robot:7.4,speed:4,warm:9.3});
+$('cform').onsubmit=e=>{e.preventDefault();let ok=true;const c=(id,bad,m)=>{setErr(id,bad?m:'');if(bad)ok=false};
+  c('cn',raw('cn').length<2,'Completează numele.');c('ce',!/^[^\s@]+@[^\s@]+\.[a-z]{2,}$/i.test(raw('ce')),'Introdu un e-mail valid.');c('cm',raw('cm').length<5,'Scrie un mesaj scurt.');
+  if(!ok)return;$('cform').style.display='none';$('cOk').style.display='block'};
 if('serviceWorker' in navigator)navigator.serviceWorker.register('sw.js').catch(()=>{});
 </script>
 </body>
