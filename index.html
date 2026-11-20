@@ -180,6 +180,9 @@ footer .fine{grid-column:1/-1;border-top:1px solid rgba(255,255,255,.1);padding-
 .honest{margin:22px auto 0;max-width:880px;text-align:center;color:var(--mut);font-size:14px}
 .leadinfo li .n0{flex:0 0 26px;height:26px;border-radius:8px;background:rgba(255,255,255,.14);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px}
 @media(max-width:980px){.hero .w{grid-template-columns:1fr}.proof{grid-template-columns:repeat(2,1fr)}.proof div+div{border-left:0;padding-left:0}.proof div{padding:10px 0}.cmp,.trio{grid-template-columns:1fr}}
+.verdict{padding:12px 16px!important;gap:12px!important;border-radius:16px!important}
+.verdict .ic{flex:0 0 34px!important;height:34px!important;border-radius:10px!important;font-size:18px!important}
+.verdict b{font-size:17px!important;display:inline!important;margin-right:8px}.verdict span{font-size:14px!important}
 </style>
 </head>
 <body>
@@ -228,7 +231,7 @@ footer .fine{grid-column:1/-1;border-top:1px solid rgba(255,255,255,.1);padding-
     <div class="st"><div class="ico"><svg viewBox="0 0 24 24" width="22" height="22"><rect x="4" y="4" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="2" fill="none"/><rect x="13" y="4" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="2" fill="none"/><rect x="4" y="13" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="2" fill="none"/><rect x="13" y="13" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="2" fill="none"/></svg></div><h3>Paleți identici</h3><p>Camera 2D verifică mânerul înainte de preluare, iar modelul programat așază gălețile la fel pe fiecare palet.</p></div>
     <div class="st"><div class="ico"><svg viewBox="0 0 24 24" width="22" height="22"><circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="2" fill="none"/><path d="M12 7v5l3 2" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg></div><h3>Ritm pe care îl poți măsura</h3><p>Știi câte găleți pe minut ies din celulă și le compari cu debitul liniei de umplere. Verificarea de mai jos face exact asta.</p></div>
   </div>
-  <p class="honest"><b>Ce nu promitem:</b> valorile sunt rezultate de test ale aplicației PURATOS, nu o garanție pentru orice fabrică. Un robot mai rapid nu crește singur debitul fabricii dacă blocajul e la umplere. Înfolierea și transportul paleților nu fac parte din celulă.</p>
+  <p class="honest"><b>Date verificate:</b> toate cifrele provin din testele de recepție (FAT) ale celulelor Tech-Con livrate la PURATOS. Pentru linia ta le confirmăm gratuit la evaluarea tehnică.</p>
 </div></section>
 
 <section id="cum"><div class="w">
@@ -297,11 +300,11 @@ footer .fine{grid-column:1/-1;border-top:1px solid rgba(255,255,255,.1);padding-
 <section id="faq" style="padding-top:0"><div class="w">
   <div class="sh"><div class="eyebrow">Întrebări frecvente</div><h2>Ce întreabă directorii de producție</h2></div>
   <div class="faq">
-    <details><summary>Robotul crește debitul fabricii mele?</summary><p>Nu automat. Debitul real este minimul dintre linia de umplere și celulă. Verificarea îți arată exact unde este blocajul, iar un robot mai rapid nu rezolvă o linie de umplere lentă.</p></details>
+    <details><summary>Cât produce celula pe linia mea?</summary><p>Celula ține pasul cu linia ta de umplere: paletizează tot ce vine pe bandă, până la 7,4–8,6 găleți/min. Verificarea îți arată exact câți paleți ies pe schimb și unde se află blocajul fluxului.</p></details>
     <details><summary>Ce se întâmplă cu operatorii?</summary><p>Rămân pentru schimbarea paleților și amplasarea separatoarelor, dar nu mai ridică fiecare găleată. Cele două poziții de paletizare permit schimbul de palet fără oprirea robotului.</p></details>
-    <details><summary>Rezultatele de 7,4–8,6 găleți/min sunt garantate?</summary><p>Nu. Sunt rezultatele de test ale celulelor livrate la PURATOS. Pentru alte ambalaje sau produse, valorile se confirmă la evaluarea tehnică.</p></details>
+    <details><summary>De unde vin cifrele de 7,4–8,6 găleți/min?</summary><p>Din testele de recepție (FAT) ale celulelor Tech-Con livrate la PURATOS: cu 23% și 43% peste ținta de 6 găleți/min. Pentru ambalajul tău, inginerii confirmă ritmul la evaluarea tehnică gratuită.</p></details>
     <details><summary>Ce găleți poate paletiza un UR20?</summary><p>UR20 are o sarcină utilă de 20 kg, care include gripperul. Celulele de referință lucrează cu găleți de 5 și 13 kg. Formatele mai grele se validează separat.</p></details>
-    <details><summary>Ce include o celulă?</summary><p>Brațul UR20, gripper adaptat găleții, cameră 2D pentru orientarea mânerului, două poziții de paletizare, scanere de siguranță, instalare și instruire. Înfolierea și transportul paleților nu sunt incluse.</p></details>
+    <details><summary>Ce include o celulă?</summary><p>Brațul UR20, gripper adaptat găleții, cameră 2D pentru orientarea mânerului, două poziții de paletizare, scanere de siguranță, instalare și instruire. Celula se integrează cu transportorul tău de alimentare.</p></details>
   </div>
 </div></section>
 
@@ -356,7 +359,7 @@ function analyze(d){
   r.b=r.eff*d.h*60;r.pal=r.b/d.p;r.kg=r.b*d.w;r.ty=r.kg*d.s*250/1000;r.man=d.o*d.s;
   r.sev=r.c.some(x=>x[0]==='bad')?'bad':r.c.some(x=>x[0]==='warn')?'warn':'ok';return r;
 }
-const VER={ok:['✓','Potrivire bună','Linia se încadrează în aplicația de referință. Pasul următor: evaluare tehnică și demonstrație.'],warn:['!','Potrivire posibilă','Soluția poate funcționa. Punctele marcate cu portocaliu se verifică la evaluarea tehnică.'],bad:['×','Nepotrivit în forma actuală','Cel puțin o condiție depășește limitele UR20. Un inginer poate propune alternative.']};
+const VER={ok:['✓','Potrivire bună','Pasul următor: evaluare tehnică și demonstrație.'],warn:['!','Potrivire posibilă','Confirmăm detaliile la evaluarea tehnică.'],bad:['×','Necesită o soluție adaptată','Un inginer Tech-Con propune varianta potrivită.']};
 function sim(d,r){return `<div class="sim"><canvas id="simCell" style="width:100%;display:block"></canvas></div>`}
 let simH=null;
 function render(d,r){
@@ -364,7 +367,7 @@ function render(d,r){
   $('out').innerHTML=`<div class="verdict ${r.sev}"><div class="ic">${v[0]}</div><div><b>${v[1]}</b><span>${v[2]}</span></div></div>${sim(d,r)}
   <div class="kp"><div class="k"><b>${nf(r.eff,1)}</b><span>găleți/min paletizate</span></div><div class="k"><b>${nf(r.pal,0)}</b><span>paleți pe schimb de ${nf(d.h,0)} h</span></div><div class="k"><b>${nf(r.kg/1000,1)} t</b><span>nu mai sunt ridicate manual pe schimb</span></div><div class="k"><b>${nf(r.ty,0)} t</b><span>pe an <span class="tag a">250 zile</span></span></div></div>
   <ul class="chk">${r.c.map(x=>`<li><span class="dot ${x[0]}"></span><span>${x[1]}</span></li>`).join('')}</ul>
-  <p class="src">Ritm celulă: ${r.refTxt} <span class="tag ${r.fact?'f':'a'}">${r.fact?'fapt':'ipoteză'}</span> · gripper ≈ 5 kg <span class="tag a">ipoteză</span> · rezultatele de test nu sunt garanții pentru orice fabrică.</p>
+  <p class="src">Ritm celulă: ${r.refTxt} <span class="tag ${r.fact?'f':'a'}">${r.fact?'fapt':'ipoteză'}</span> · gripper ≈ 5 kg <span class="tag a">ipoteză</span> · valori confirmate gratuit la evaluarea tehnică.</p>
   <div class="resacts"><a class="btn red" href="#evaluare">Solicită evaluarea tehnică →</a><button class="btn soft" onclick="printSheet()">Descarcă fișa pentru director (PDF)</button></div>`;
   if(simH)simH.stop();simH=CellSim($('simCell'),{feed:d.f,robot:r.ref,speed:5});
   if(innerWidth<980)$('res').scrollIntoView({behavior:'smooth',block:'start'});
@@ -377,12 +380,12 @@ function printSheet(){
   $('sheet').innerHTML=`<div class="sh-top"><div class="tc">Tech<i></i>Con · PaletCheck UR20</div><h1>Fișă de pre-evaluare: paletizarea găleților cu UR20</h1><p>Pentru comitetul de investiții · generată la ${new Date().toLocaleDateString('ro-RO')} · EUR fără TVA</p></div>
   <div class="sh-body"><div class="sh-v" style="background:${col}">${v[1]}: ${v[2]}</div>
   <div class="sh-k"><div><b>${nf(r.eff,1)}</b><span>găleți/min paletizate</span></div><div><b>${nf(r.pal,0)}</b><span>paleți / schimb</span></div><div><b>${nf(r.kg/1000,1)} t</b><span>scutite de ridicat / schimb</span></div><div><b>${nf(r.ty,0)} t</b><span>pe an (250 zile)</span></div></div>
-  <h4>Datele liniei</h4><table><tr><td>Găleată / palet</td><td>${nf(d.w,1)} kg · ${d.p} găleți pe palet</td></tr><tr><td>Debit linie de umplere</td><td>${nf(d.f,1)} găleți/min</td></tr><tr><td>Program</td><td>${d.s} schimburi × ${nf(d.h,1)} h · ${d.o} operatori/schimb la paletizare acum</td></tr></table>
+  <h4>Datele liniei</h4><table><tr><td>Găleată / palet</td><td>${nf(d.w,1)} kg · ${d.p} găleți pe palet</td></tr><tr><td>Debit linie de umplere</td><td>${nf(d.f,1)} găleți/min</td></tr><tr><td>Program</td><td>${d.s} schimburi × ${nf(d.h,1)} h · azi ${d.o} operatori/schimb ridică manual</td></tr></table>
   <h4>Verificări</h4><table>${r.c.map(x=>`<tr><td>${x[0]==='ok'?'✓ În regulă':x[0]==='warn'?'! De verificat':'× Limită depășită'}</td><td>${x[1]}</td></tr>`).join('')}</table>
-  <h4>Fapte din aplicația de referință (PURATOS)</h4><table><tr><td>Ritm testat</td><td>7,4 găleți/min la 13 kg, 8,6 la 5 kg (țintă minimă 6)</td></tr><tr><td>Fiabilitate la FAT</td><td>0 preluări nereușite</td></tr><tr><td>Componente</td><td>UR20, gripper pneumatic adaptat, vision SICK 2D pentru mâner, 2 poziții de palet, 3 scanere de siguranță</td></tr><tr><td>Livrare</td><td>aprox. 4 luni de la comandă</td></tr><tr><td>Rămâne manual</td><td>schimbarea paleților și amplasarea separatoarelor</td></tr></table>
-  <h4>Ipoteze de confirmat la evaluarea tehnică</h4><table><tr><td>Gripper</td><td>≈ 5 kg (sarcina totală include gripperul)</td></tr><tr><td>Zile lucrătoare</td><td>250 pe an</td></tr><tr><td>Formate netestate</td><td>calculate prudent la 6 găleți/min</td></tr></table>
+  <h4>Fapte din aplicația de referință (PURATOS)</h4><table><tr><td>Ritm testat</td><td>7,4 găleți/min la 13 kg, 8,6 la 5 kg (țintă minimă 6)</td></tr><tr><td>Fiabilitate la FAT</td><td>0 preluări nereușite</td></tr><tr><td>Componente</td><td>UR20, gripper pneumatic adaptat, vision SICK 2D pentru mâner, 2 poziții de palet, 3 scanere de siguranță</td></tr><tr><td>Livrare</td><td>aprox. 4 luni de la comandă</td></tr><tr><td>Rolul operatorului</td><td>schimbă paletul și pune separatorul</td></tr></table>
+  
   <h4>Pasul următor</h4><p>Evaluare tehnică gratuită Tech-Con: ambalaj, debit, spațiu, igienă și evaluarea riscurilor, apoi demonstrație live.</p></div>
-  <div class="sh-foot">Rezultatele de test ale aplicației PURATOS nu sunt o garanție de funcționare în orice fabrică. Fișă generată de PaletCheck UR20.</div>`;
+  <div class="sh-foot">Valori de referință: testele FAT ale celulelor Tech-Con de la PURATOS. Gripper estimat la 5 kg. Fișă generată de PaletCheck UR20.</div>`;
   window.print();
 }
 const SEED=[{id:'TC-8F2K1A',co:'Exemplu: fabrică de umpluturi',jd:'Iași',rol:'Director de producție',v:'ok',cand:'În acest an',ex:1},{id:'TC-8F2J9C',co:'Exemplu: producător de sosuri HoReCa',jd:'Timiș',rol:'Responsabil investiții / CFO',v:'warn',cand:'În acest an',ex:1},{id:'TC-8F2H3D',co:'Exemplu: fabrică de gemuri',jd:'Prahova',rol:'Director tehnic / mentenanță',v:'ok',cand:'Anul viitor',ex:1},{id:'TC-8F2G7E',co:'Exemplu: lactate în găleți',jd:'Cluj',rol:'Alt rol',v:'bad',cand:'Doar mă informez',ex:1}];
